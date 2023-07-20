@@ -73,9 +73,11 @@ st.title("PASEG Genie // Donate a Coffee :coffee:")
 #   st.success("Login successful!")
 
 
-if st.button("Validate") and login_username == username and login_password == password :
-    with st.button("Get answer"):
-        query = st.text_input("Enter your query:")
-        q = query + '\n' + condition1
-        result = qa.run(q)
-        st.write(result)
+if st.button("Continue") and login_username == username and login_password == password :
+    st.success("Login successful!")
+    query = st.text_input("Enter your query:")
+    q = query + '\n' + condition1
+    result = qa.run(q)
+    st.write(result)
+else:
+    st.warning("Type correct credentials.")
