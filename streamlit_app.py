@@ -34,20 +34,20 @@ if st.button("Login"):
         st.success("Login successful!")
         with st.beta_expander("OpenAI API key"):
             openai_api_key = st.text_input("Enter your OpenAI API key:")
-            if openai_api_key:
-                os.environ['OPENAI_API_KEY'] = openai_api_key
-                embeddings = HuggingFaceEmbeddings()
-                docsearch = Pinecone.from_existing_index(index_name, embeddings)
-                chat = ChatOpenAI(model_name='gpt-3.5-turbo-0613', temperature=0.80)
-                qachain = load_qa_chain(chat, chain_type='stuff')
-                qa = RetrievalQA(combine_documents_chain=qachain, retriever=docsearch.as_retriever())
-                condition1 = '\n [organize information: organize text so its easy to read, and bullet points when needed.] \n [tone and voice style: clear sentences, avoid use of complex sentences]'
-                query = st.text_input("Enter your query:")
-                if st.button("Get answer"):
-                    q = query + '\n' + condition1
-                    result = qa.run(q)
-                    st.write(result)
-            else:
-                st.warning("Please enter an OpenAI API key.")
+        if openai_api_key:
+            os.environ['OPENAI_API_KEY'] = openai_api_key
+            embeddings = HuggingFaceEmbeddings()
+            docsearch = Pinecone.from_existing_index(index_name, embeddings)
+            chat = ChatOpenAI(model_name='gpt-3.5-turbo-0613', temperature=0.80)
+            qachain = load_qa_chain(chat, chain_type='stuff')
+            qa = RetrievalQA(combine_documents_chain=qachain, retriever=docsearch.as_retriever())
+            condition1 = '\n [organize information: organize text so its easy to read, and bullet points when needed.] \n [tone and voice style: clear sentences, avoid use of complex sentences]'
+            query = st.text_input("Enter your query:")
+            if st.button("Get answer"):
+                q = query + '\n' + condition1
+                result = qa.run(q)
+                st.write(result)
+        else:
+            st.warning("Please enter an OpenAI API key.")
     else:
         st.error("Invalid username or password.")
