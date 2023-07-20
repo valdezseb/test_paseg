@@ -19,10 +19,11 @@ index_name = 'dbpaseg'
 
 
 # Prompt user for OpenAI API key
-openapikey = st.text_input("Enter your OpenAI API key:")
 
-
-os.environ['OPENAI_API_KEY'] = openapikey
+# Prompt user for OpenAI API key
+openai_api_key = st.text_input("Enter your OpenAI API key:")
+if openai_api_key:
+    os.environ['OPENAI_API_KEY'] = openai_api_key
 
 
 
