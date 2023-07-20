@@ -19,10 +19,10 @@ index_name = 'dbpaseg'
 
 
 # Prompt user for OpenAI API key
-openai.api_key = st.text_input("Enter your OpenAI API key:")
+openapikey = st.text_input("Enter your OpenAI API key:")
 
 
-
+os.environ['OPENAI_API_KEY'] = openapikey
 
 
 
@@ -39,7 +39,7 @@ from langchain.llms import OpenAI
 from langchain.chains import RetrievalQA
 from langchain.chat_models import ChatOpenAI
 
-chat = ChatOpenAI(model_name='gpt-3.5-turbo-0613', temperature=0.80, openai_api_key=openai.api_key)
+chat = ChatOpenAI(model_name='gpt-3.5-turbo-0613', temperature=0.80)
 
 qachain = load_qa_chain(chat, chain_type='stuff')
 
