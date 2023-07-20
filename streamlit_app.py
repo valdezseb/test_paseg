@@ -28,8 +28,8 @@ st.set_page_config(page_title="PASEG Genie // buy me a coffee", page_icon=":coff
 st.title("Log in your Credentials")
 
 # Prompt user for login credentials
-login_username = st.text_input("Username:")
-login_password = st.text_input("Password:", type="password")
+#login_username = st.text_input("Username:")
+#login_password = st.text_input("Password:", type="password")
 
 # Prompt user for OpenAI API key
 #openai_api_key = st.text_input("Enter your OpenAI API key:")
@@ -72,8 +72,9 @@ st.title("PASEG Genie // Donate a Coffee :coffee:")
 #if login_username == username and login_password == password:
 #   st.success("Login successful!")
 
+#and login_username == username and login_password == password
 
-if st.button("Continue") and login_username == username and login_password == password :
+if st.button("Continue"):
     st.success("Login successful!")
     query = st.text_input("Enter your query:")
     q = query + '\n' + condition1
