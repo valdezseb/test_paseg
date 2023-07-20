@@ -81,3 +81,13 @@ if st.button("Continue") and login_username == username and login_password == pa
     st.write(result)
 else:
     st.warning("Type correct credentials.")
+
+
+hide_st_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            header {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_st_style, unsafe_allow_html=True)
