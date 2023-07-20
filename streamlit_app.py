@@ -20,10 +20,7 @@ index_name = 'dbpaseg'
 
 # Prompt user for OpenAI API key
 openai.api_key = st.text_input("Enter your OpenAI API key:")
-if openai.api_key:
-    pass
-else:
-    st.warning("Please enter your OpenAI API key to continue.")
+
 
 
 
