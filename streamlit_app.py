@@ -25,7 +25,7 @@ password = "65326"
 # Define Streamlit app
 st.set_page_config(page_title="PASEG Genie // buy me a coffee", page_icon=":coffee:")
 
-st.title("Question Answering System")
+st.title("Log in your Credentials")
 
 # Prompt user for login credentials
 login_username = st.text_input("Username:")
@@ -63,7 +63,7 @@ condition1 = '\n [organize information: organize text so its easy to read, and b
 
 
 
-st.title("Question Answering System")
+st.title("PASEG Genie // Donate a Coffee :coffee:")
 
 
 
@@ -74,6 +74,7 @@ query = st.text_input("Enter your query:")
 
 
 if st.button("Get answer") and login_username == username and login_password == password :
+    query = st.text_input("Enter your query:")
     q = query + '\n' + condition1
     result = qa.run(q)
     st.write(result)
