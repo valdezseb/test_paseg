@@ -16,14 +16,27 @@ api_key = st.secrets["pinecone_api_key"]
 pinecone.init(api_key=api_key, environment='asia-southeast1-gcp-free')
 index_name = 'dbpaseg'
 
+os.environ['OPEN_API_KEY'] = st.secrets['openapikey']
 
+# Define username and password
+username = "ppca"
+password = "65326"
+
+# Define Streamlit app
+st.set_page_config(page_title="PASEG Genie // buy me a coffee", page_icon=":coffee:")
+
+st.title("Question Answering System")
+
+# Prompt user for login credentials
+login_username = st.text_input("Username:")
+login_password = st.text_input("Password:", type="password")
 
 # Prompt user for OpenAI API key
+#openai_api_key = st.text_input("Enter your OpenAI API key:")
 
-# Prompt user for OpenAI API key
-openai_api_key = st.text_input("Enter your OpenAI API key:")
-if openai_api_key:
-    os.environ['OPENAI_API_KEY'] = openai_api_key
+if login_username == username and login_password == password:
+    st.success("Login successful!")
+    
 
 
 
