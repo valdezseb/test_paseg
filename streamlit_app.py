@@ -24,7 +24,7 @@ password = "65326"
 # Define Streamlit app
 st.set_page_config(page_title="PASEG Genie // buy me a coffee", page_icon=":coffee:")
 
-st.title("PASEG Genie " + emoji.emojize(":coffee:"))
+st.title("PASEG Genie ")
 
 login_username = st.text_input("Username:")
 login_password = st.text_input("Password:", type="password")
