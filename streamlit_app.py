@@ -32,7 +32,7 @@ login_password = st.text_input("Password:", type="password")
 if st.button("Login"):
     if login_username == username and login_password == password:
         st.success("Login successful!")
-        with st.beta_expander("OpenAI API key"):
+        with st.expander("OpenAI API key"):
             openai_api_key = st.text_input("Enter your OpenAI API key:")
             if openai_api_key:
                 os.environ['OPENAI_API_KEY'] = openai_api_key
