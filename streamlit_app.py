@@ -34,11 +34,9 @@ login_password = st.text_input("Password:", type="password")
 # Prompt user for OpenAI API key
 #openai_api_key = st.text_input("Enter your OpenAI API key:")
 
-if login_username == username and login_password == password:
-    st.success("Login successful!")
+#if login_username == username and login_password == password:
+#    st.success("Login successful!")
     
-
-
 
 
 
@@ -71,7 +69,11 @@ st.title("Question Answering System")
 
 query = st.text_input("Enter your query:")
 
-if st.button("Get answer"):
+#if login_username == username and login_password == password:
+#   st.success("Login successful!")
+
+
+if st.button("Get answer") and login_username == username and login_password == password :
     q = query + '\n' + condition1
     result = qa.run(q)
     st.write(result)
