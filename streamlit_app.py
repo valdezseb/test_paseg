@@ -67,7 +67,7 @@ st.title("PASEG Genie // Donate a Coffee :coffee:")
 
 
 
-query = st.text_input("Enter your query:")
+#query = st.text_input("Enter your query:")
 
 #if login_username == username and login_password == password:
 #   st.success("Login successful!")
