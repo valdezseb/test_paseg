@@ -79,8 +79,6 @@ if st.button("Continue") and login_username == username and login_password == pa
     q = query + '\n' + condition1
     result = qa.run(q)
     st.write(result)
-else:
-    st.warning("Type correct credentials.")
 
 
 hide_st_style = """
