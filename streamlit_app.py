@@ -7,6 +7,7 @@ from langchain.text_splitter import CharacterTextSplitter
 from langchain.vectorstores import ElasticVectorSearch, Pinecone, Weaviate, FAISS
 import openai
 import os
+from langchain.chat_models import ChatOpenAI
 
 from langchain.vectorstores import Chroma, Pinecone
 import pinecone
