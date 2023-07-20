@@ -39,7 +39,7 @@ from langchain.llms import OpenAI
 from langchain.chains import RetrievalQA
 from langchain.chat_models import ChatOpenAI
 
-chat = ChatOpenAI(model_name='gpt-3.5-turbo-0613', temperature=0.80)
+chat = ChatOpenAI(model_name='gpt-3.5-turbo-0613', temperature=0.80, openai_api_key=openai.api_key)
 
 qachain = load_qa_chain(chat, chain_type='stuff')
 
