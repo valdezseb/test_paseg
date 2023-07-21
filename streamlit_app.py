@@ -10,7 +10,7 @@ import os
 from langchain.llms import OpenAI
 from langchain.vectorstores import Chroma, Pinecone
 import pinecone
-
+from langchain.chat_models import ChatOpenAI
 st.set_page_config(page_title="PASEG Genie ", page_icon=":coffee:")
 # Load Pinecone API key
 api_key = st.secrets["pinecone_api_key"]
