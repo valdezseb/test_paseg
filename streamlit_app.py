@@ -41,50 +41,32 @@ password = "65326"
 #if login_username == username and login_password == password:
 #    st.success("Login successful!")
     
+# Create a function to load embeddings and Pinecone client
+@st.cache(allow_output_mutation=True)  # Allow output mutation for the Pinecone client
+def load_embeddings_and_pinecone():
+    embeddings = HuggingFaceEmbeddings()
+    docsearch = Pinecone.from_existing_index(index_name, embeddings)
+    return docsearch
 
+# Load the Pinecone client using st.cache
+docsearch = load_embeddings_and_pinecone()
 
-
-embeddings = HuggingFaceEmbeddings()
-
-# if you already have an index, you can load it like this
-docsearch = Pinecone.from_existing_index(index_name, embeddings)
-
-from langchain.chains.question_answering import load_qa_chain
-from langchain.llms import OpenAI
-
-from langchain.chains import RetrievalQA
-from langchain.chat_models import ChatOpenAI
-
+# Create the Chat and RetrievalQA objects
 chat = ChatOpenAI(model_name='gpt-3.5-turbo-0613', temperature=0.80)
-
 qachain = load_qa_chain(chat, chain_type='stuff')
-
 qa = RetrievalQA(combine_documents_chain=qachain, retriever=docsearch.as_retriever())
 
 condition1 = '\n [organize information: organize text so its easy to read, and bullet points when needed.] \n [tone and voice style: clear sentences, avoid use of complex sentences]'
 
-# INTEGRATE STREAMLIT TO THE FOLLOWING CODE, SO USER CAN INPUT THE QUERY, AND RESULT SHOULD A APPEAR IN A TEXT BOX USING STREAMLIT
-
-
-
 st.title("PASEG Genie // Donate a Coffee :coffee:")
 
-
-
-#query = st.text_input("Enter your query:" )
-
-#if login_username == username and login_password == password:
-#   st.success("Login successful!")
-
-#and login_username == username and login_password == password
-
-
+# Let the user input a query
 query = st.text_input("Enter your query:")
-#q = query + '\n' + condition1
 
-q = query 
+# Run the QA system and display the result using Streamlit
+if query:
+    result = qa.run(query + '\n' + condition1)
+    st.write(result)
 
-if q:         
-  result = qa.run(q + '\n' + condition1)
-  st.write(result)
+
 
