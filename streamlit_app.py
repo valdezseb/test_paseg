@@ -19,7 +19,7 @@ index_name = 'dbpaseg'
 
 #os.environ['OPENAI_API_KEY'] = st.secrets['openai_api_key']
 
-open_api_key = st.text_input("Enter OpenAI API Key:")
+openai_api_key = st.text_input("Enter OpenAI API Key:")
 os.environ['OPENAI_API_KEY'] = openai_api_key
 
 # Define username and password
