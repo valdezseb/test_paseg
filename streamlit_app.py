@@ -17,7 +17,7 @@ api_key = st.secrets["pinecone_api_key"]
 pinecone.init(api_key=api_key, environment='asia-southeast1-gcp-free')
 index_name = 'dbpaseg'
 
-os.environ['OPEN_API_KEY'] = st.secrets['openapikey']
+os.environ['OPENAI_API_KEY'] = st.secrets['openai_api_key']
 
 # Define username and password
 username = "ppca"
