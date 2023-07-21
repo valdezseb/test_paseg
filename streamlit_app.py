@@ -86,13 +86,9 @@ st.title("PASEG Genie // Donate a Coffee :coffee:")
 
 query = st.text_input("Enter your query:")
 #q = query + '\n' + condition1
-
-q = query + condition1
-
-if q:
-    
-    result = qa.run(q)
-    st.write(result)
+q = query + '\n' + condition1 
+result = qa.run(q)
+st.write(result)
 
 
 
