@@ -84,12 +84,12 @@ st.title("PASEG Genie // Donate a Coffee :coffee:")
 #and login_username == username and login_password == password
 
 
-query = st.text_input("Enter your query:") + condition1
+query = st.text_input("Enter your query:")
 #q = query + '\n' + condition1
 
-q = query 
+q = query + condition1
 
-if query:
+if q:
     
     result = qa.run(q)
     st.write(result)
