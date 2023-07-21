@@ -11,7 +11,7 @@ import os
 from langchain.vectorstores import Chroma, Pinecone
 import pinecone
 
-st.set_page_config(page_title="PASEG Genie // buy me a coffee", page_icon=":coffee:")
+st.set_page_config(page_title="PASEG Genie ", page_icon=":coffee:")
 # Load Pinecone API key
 api_key = st.secrets["pinecone_api_key"]
 pinecone.init(api_key=api_key, environment='asia-southeast1-gcp-free')
@@ -82,9 +82,9 @@ st.title("PASEG Genie // Donate a Coffee :coffee:")
 query = st.text_input("Enter your query:")
 #q = query + '\n' + condition1
 
-q = query + '\n' + condition1
+q = query 
 
 if q:         
-  result = qa.run(q)
+  result = qa.run(q + '\n' + condition1)
   st.write(result)
 
