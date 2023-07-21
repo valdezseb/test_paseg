@@ -11,6 +11,15 @@ import os
 from langchain.vectorstores import Chroma, Pinecone
 import pinecone
 
+hide_st_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            header {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_st_style, unsafe_allow_html=True)
+
 # Load Pinecone API key
 api_key = st.secrets["pinecone_api_key"]
 pinecone.init(api_key=api_key, environment='asia-southeast1-gcp-free')
@@ -67,7 +76,7 @@ st.title("PASEG Genie // Donate a Coffee :coffee:")
 
 
 
-#query = st.text_input("Enter your query:")
+#query = st.text_input("Enter your query:" )
 
 #if login_username == username and login_password == password:
 #   st.success("Login successful!")
@@ -75,17 +84,15 @@ st.title("PASEG Genie // Donate a Coffee :coffee:")
 #and login_username == username and login_password == password
 
 
-query = st.text_input("Enter your query:")
-q = query + '\n' + condition1
-result = qa.run(q)
-st.write(result)
+query = st.text_input("Enter your query:") + condition1
+#q = query + '\n' + condition1
+
+q = query 
+
+if query:
+    
+    result = qa.run(q)
+    st.write(result)
 
 
-hide_st_style = """
-            <style>
-            #MainMenu {visibility: hidden;}
-            footer {visibility: hidden;}
-            header {visibility: hidden;}
-            </style>
-            """
-st.markdown(hide_st_style, unsafe_allow_html=True)
+
