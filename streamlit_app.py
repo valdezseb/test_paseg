@@ -11,7 +11,7 @@ import os
 from langchain.vectorstores import Chroma, Pinecone
 import pinecone
 
-
+st.set_page_config(page_title="PASEG Genie // buy me a coffee", page_icon=":coffee:")
 # Load Pinecone API key
 api_key = st.secrets["pinecone_api_key"]
 pinecone.init(api_key=api_key, environment='asia-southeast1-gcp-free')
@@ -27,7 +27,7 @@ username = "ppca"
 password = "65326"
 
 # Define Streamlit app
-st.set_page_config(page_title="PASEG Genie // buy me a coffee", page_icon=":coffee:")
+#st.set_page_config(page_title="PASEG Genie // buy me a coffee", page_icon=":coffee:")
 
 #st.title("Log in your Credentials")
 
