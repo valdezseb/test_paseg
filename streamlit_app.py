@@ -69,7 +69,7 @@ qa = RetrievalQA(combine_documents_chain=qachain, retriever=docsearch.as_retriev
 
 condition1 = '\n [organize information: organize text so its easy to read, and bullet points when needed.] \n [tone and voice style: clear sentences, avoid use of complex sentences]'
 
-st.title("PASEG Genie // Donate a Coffee :coffee:")
+st.title("PASEG Genie // for education purpose :coffee:")
 
 # Let the user input a query
 query = st.text_input("Enter your query:")
