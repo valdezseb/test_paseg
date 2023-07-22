@@ -46,7 +46,7 @@ password = "65326"
 #    st.success("Login successful!")
     
 # Create a function to load embeddings and Pinecone client
-@st.cache(allow_output_mutation=True)  # Allow output mutation for the Pinecone client
+@st.cache_resource  # Allow output mutation for the Pinecone client
 def load_embeddings_and_pinecone():
     embeddings = HuggingFaceEmbeddings()
     docsearch = Pinecone.from_existing_index(index_name, embeddings)
