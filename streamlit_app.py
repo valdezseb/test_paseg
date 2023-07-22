@@ -21,6 +21,8 @@ index_name = 'dbpaseg'
 
 os.environ['OPENAI_API_KEY'] = st.secrets['openai_api_key']
 
+os.environ["TOKENIZERS_PARALLELISM"] = "false"
+
 #openai_api_key = st.text_input("Enter OpenAI API Key:")
 #os.environ['OPENAI_API_KEY'] = openai_api_key
 
