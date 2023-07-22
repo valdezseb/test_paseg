@@ -13,7 +13,7 @@ import pinecone
 from langchain.chat_models import ChatOpenAI
 from langchain.chains.question_answering import load_qa_chain
 from langchain.chains import RetrievalQA
-st.set_page_config(page_title="PASEG Genie ", page_icon=":coffee:")
+st.set_page_config(page_title="PASEG Genie ", page_icon=":coffee:", layout="wide")
 # Load Pinecone API key
 api_key = st.secrets["pinecone_api_key"]
 pinecone.init(api_key=api_key, environment='asia-southeast1-gcp-free')
@@ -70,7 +70,7 @@ qa = RetrievalQA(combine_documents_chain=qachain, retriever=docsearch.as_retriev
 condition1 = '\n [organize information: organize text so its easy to read, and bullet points when needed.] \n [tone and voice style: clear sentences, avoid use of complex sentences]'
 
 st.title("PASEG Genie // for education purpose :coffee:")
-st.markdown("*Chat With The Planning and Schedule Excellence Guide ver. 5.0*")
+st.markdown("*Chatbot for Planning and Schedule Excellence Guide*", unsafe_allow_html=True)
 st.markdown("---")
 # Let the user input a query
 query = st.text_input("Enter your query:")
