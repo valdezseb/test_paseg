@@ -46,14 +46,31 @@ password = "65326"
 #    st.success("Login successful!")
     
 # Create a function to load embeddings and Pinecone client
+#@st.cache(allow_output_mutation=True)  # Allow output mutation for the Pinecone client
+#def load_embeddings_and_pinecone():
+#    embeddings = HuggingFaceEmbeddings()
+#    docsearch = Pinecone.from_existing_index(index_name, embeddings)
+#    return docsearch
+
+# Load the Pinecone client using st.cache
+#docsearch = load_embeddings_and_pinecone()
+
+# Function to get the embeddings using the 'text-embedding-ada-002' model from OpenAI
+def get_embedding(text, model="text-embedding-ada-002"):
+    text = text.replace("\n", " ")
+    return openai.Embedding.create(input=[text], model=model)['data'][0]['embedding']
+
+# Create a function to load embeddings and Pinecone client using the 'text-embedding-ada-002' model
 @st.cache(allow_output_mutation=True)  # Allow output mutation for the Pinecone client
 def load_embeddings_and_pinecone():
-    embeddings = HuggingFaceEmbeddings()
-    docsearch = Pinecone.from_existing_index(index_name, embeddings)
+    embeddings = get_embedding  # Use the 'get_embedding' function with the desired model
+    docsearch = pinecone.Index(index_name).update(index_name, embeddings)
     return docsearch
 
 # Load the Pinecone client using st.cache
 docsearch = load_embeddings_and_pinecone()
+
+
 
 # Create the Chat and RetrievalQA objects
 chat = ChatOpenAI(model_name='gpt-3.5-turbo-0613', temperature=0.80)
