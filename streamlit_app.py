@@ -49,7 +49,7 @@ def load_embedding():
 embeddings = load_embedding()
 @st.cache_resource
 def load_pinecone(_embeddings, index_name):
-    docsearch = Pinecone.from_existing_index(index_name, embeddings)
+    docsearch = Pinecone.from_existing_index(index_name, _embeddings)
     return docsearch
 
 
@@ -59,7 +59,7 @@ def load_pinecone(_embeddings, index_name):
 # Load the Pinecone client using st.cache
 #docsearch = load_embeddings_and_pinecone()
 # Load the Pinecone client using st.cache
-docsearch = load_pinecone(embeddings, "db-paseg")
+docsearch = load_pinecone(_embeddings, "db-paseg")
 # Create the Chat and RetrievalQA objects
 chat = ChatOpenAI(model_name='gpt-3.5-turbo-0613', temperature=0.80)
 qachain = load_qa_chain(chat, chain_type='stuff')
