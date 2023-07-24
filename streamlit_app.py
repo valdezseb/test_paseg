@@ -51,8 +51,8 @@ qa = RetrievalQA(combine_documents_chain=qachain, retriever=docsearch.as_retriev
 condition1 = '\n [organize information: organize text so its easy to read, and bullet points when needed.] \n [tone and voice style: clear sentences, avoid use of complex sentences]'
 
 st.title("PASEG Genie // for education purpose :coffee:")
-st.markdown("*Chat With The Planning and Schedule Excellence Guide ver. 5.0*")
-st.markdown("*Chatbot for Planning and Schedule Excellence Guide*", unsafe_allow_html=True)
+#st.markdown("Donate a coffee")
+st.markdown("*Chat With The Planning and Schedule Excellence Guide ver. 5.0*", unsafe_allow_html=True)
 st.markdown("---")
 # Let the user input a query
 query = st.text_input("Enter your query:")
