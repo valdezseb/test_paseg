@@ -31,7 +31,7 @@ password = "65326"
 #st.title("Log in your Credentials")
 # Prompt user for login credentials
 #login_username = st.text_input("Username:")
-@@ -50,27 +50,27 @@
+
 def load_embeddings_and_pinecone():
     embeddings = HuggingFaceEmbeddings()
     docsearch = Pinecone.from_existing_index(index_name, embeddings)
