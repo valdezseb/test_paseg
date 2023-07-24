@@ -80,6 +80,6 @@ st.markdown("---")
 query = st.text_input("Enter your query:")
 # Run the QA system and display the result using Streamlit
 if query:
-    result = qa.run(query + '\n' + condition1)
+    result = qa.run(query + '\n' + condition1, stream=True)
     st.write(result)
 
