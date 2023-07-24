@@ -13,7 +13,7 @@ import pinecone
 from langchain.chat_models import ChatOpenAI
 from langchain.chains.question_answering import load_qa_chain
 from langchain.chains import RetrievalQA
-st.set_page_config(page_title="PASEG Genie ", page_icon=":coffee:")
+#st.set_page_config(page_title="PASEG Genie ", page_icon=":coffee:")
 st.set_page_config(page_title="PASEG Genie ", page_icon=":coffee:", layout="wide")
 # Load Pinecone API key
 api_key = st.secrets["pinecone_api_key"]
