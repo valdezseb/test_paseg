@@ -48,7 +48,8 @@ password = "65326"
 # Create a function to load embeddings and Pinecone client
 @st.cache_resource  # Allow output mutation for the Pinecone client
 def load_embeddings():
-    return embeddings = HuggingFaceEmbeddings()
+    embeddings = HuggingFaceEmbeddings()
+    return embeddings
 
 embeddings = load_embeddings()
 
