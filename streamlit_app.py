@@ -35,15 +35,31 @@ password = "65326"
 # Prompt user for login credentials
 #login_username = st.text_input("Username:")
 
+#@st.cache_resource
+#def load_embeddings_and_pinecone():
+#    embeddings = HuggingFaceEmbeddings()
+#    docsearch = Pinecone.from_existing_index(index_name, embeddings)
+#    return docsearch
+
 @st.cache_resource
-def load_embeddings_and_pinecone():
+def load_embedding():
     embeddings = HuggingFaceEmbeddings()
+    return embeddings
+
+embeddings = load_embedding()
+
+def load_pinecone(embeddings, index_name):
     docsearch = Pinecone.from_existing_index(index_name, embeddings)
     return docsearch
+
+
+
+
+
 # Load the Pinecone client using st.cache
 #docsearch = load_embeddings_and_pinecone()
 # Load the Pinecone client using st.cache
-docsearch = load_embeddings_and_pinecone()
+docsearch = load_pinecone(embeddings, "db-paseg")
 # Create the Chat and RetrievalQA objects
 chat = ChatOpenAI(model_name='gpt-3.5-turbo-0613', temperature=0.80)
 qachain = load_qa_chain(chat, chain_type='stuff')
