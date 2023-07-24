@@ -13,14 +13,17 @@ import pinecone
 from langchain.chat_models import ChatOpenAI
 from langchain.chains.question_answering import load_qa_chain
 from langchain.chains import RetrievalQA
+
 #st.set_page_config(page_title="PASEG Genie ", page_icon=":coffee:")
 st.set_page_config(page_title="PASEG Genie ", page_icon=":coffee:", layout="wide")
+
 # Load Pinecone API key
 api_key = st.secrets["pinecone_api_key"]
 pinecone.init(api_key=api_key, environment='asia-southeast1-gcp-free')
 index_name = 'db-paseg'
+
 os.environ['OPENAI_API_KEY'] = st.secrets['openai_api_key']
-os.environ["TOKENIZERS_PARALLELISM"] = "false"
+#os.environ["TOKENIZERS_PARALLELISM"] = "false"
 #openai_api_key = st.text_input("Enter OpenAI API Key:")
 #os.environ['OPENAI_API_KEY'] = openai_api_key
 # Define username and password
@@ -32,6 +35,7 @@ password = "65326"
 # Prompt user for login credentials
 #login_username = st.text_input("Username:")
 
+@st.cache_resource
 def load_embeddings_and_pinecone():
     embeddings = HuggingFaceEmbeddings()
     docsearch = Pinecone.from_existing_index(index_name, embeddings)
