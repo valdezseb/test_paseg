@@ -55,7 +55,8 @@ embeddings = load_embeddings()
 
 @st.cache_data
 def load_pinecone(embeddings):
-    return docsearch = Pinecone.from_existing_index(index_name, embeddings)
+    docsearch = Pinecone.from_existing_index(index_name, embeddings)
+    return docsearch
 
 # Load the Pinecone client using st.cache
 docsearch = load_pinecone(embeddings)
