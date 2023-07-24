@@ -1,6 +1,6 @@
 # CODE
 import streamlit as st
-from PyPDF2 import PdfReader
+#from PyPDF2 import PdfReader
 #from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.text_splitter import CharacterTextSplitter
@@ -47,19 +47,17 @@ password = "65326"
     
 # Create a function to load embeddings and Pinecone client
 @st.cache_resource  # Allow output mutation for the Pinecone client
-def load_embeddings_and_pinecone():
-    embeddings = HuggingFaceEmbeddings()
-    docsearch = Pinecone.from_existing_index(index_name, embeddings)
-    return docsearch
+def load_embeddings():
+    return embeddings = HuggingFaceEmbeddings()
+
+embeddings = load_embeddings()
+
+@st.cache_data
+def load_pinecone(embeddings):
+    return docsearch = Pinecone.from_existing_index(index_name, embeddings)
 
 # Load the Pinecone client using st.cache
-#docsearch = load_embeddings_and_pinecone()
-
-
-
-# Load the Pinecone client using st.cache
-docsearch = load_embeddings_and_pinecone()
-
+docsearch = load_pinecone(embeddings)
 
 
 # Create the Chat and RetrievalQA objects
@@ -68,6 +66,7 @@ qachain = load_qa_chain(chat, chain_type='stuff')
 qa = RetrievalQA(combine_documents_chain=qachain, retriever=docsearch.as_retriever())
 
 condition1 = '\n [organize information: organize text so its easy to read, and bullet points when needed.] \n [tone and voice style: clear sentences, avoid use of complex sentences]'
+
 
 st.title("PASEG Genie // for education purpose :coffee:")
 st.markdown("*Chatbot for Planning and Schedule Excellence Guide*", unsafe_allow_html=True)
