@@ -1,3 +1,15 @@
+# CODE
+import streamlit as st
+from PyPDF2 import PdfReader
+#from langchain.embeddings.openai import OpenAIEmbeddings
+from langchain.embeddings import HuggingFaceEmbeddings
+from langchain.text_splitter import CharacterTextSplitter
+from langchain.vectorstores import ElasticVectorSearch, Pinecone, Weaviate, FAISS
+import openai
+import os
+from langchain.llms import OpenAI
+from langchain.vectorstores import Chroma, Pinecone
+import pinecone
 from langchain.chat_models import ChatOpenAI
 from langchain.chains.question_answering import load_qa_chain
 from langchain.chains import RetrievalQA
