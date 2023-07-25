@@ -21,7 +21,7 @@ import pandas as pd
 import pygwalker as pyg
 import streamlit.components.v1 as components
 import re
-import datetime
+import datetime as dt
 import numpy as np
 
 #st.set_page_config(page_title="PASEG Genie ", page_icon=":coffee:")
