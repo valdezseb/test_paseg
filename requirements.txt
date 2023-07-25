@@ -10,3 +10,5 @@ PyPDF2==3.0.1
 pydantic==1.10.11
 openapi-schema-pydantic==1.2.4
 pygwalker==0.2
+pandas==2.0
+openpyxl==3.1.2
