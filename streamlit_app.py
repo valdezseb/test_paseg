@@ -93,7 +93,8 @@ st.markdown("Data Analysis Section")
 
 uploaded_file = st.file_uploader("Choose a file")
 if uploaded_file is not None:
-    df = pd.read_excel(uploaded_file, engine="openpyxl")
+    df = pd.read_excel(uploaded_file, engine="openpyxl", 
+                      parse_dates=['Start_Date','Finish_Date','Duration','Actual_Start','Actual_Finish'])
     # Split the Predecessors column by comma and join the values that contain a special character or word
     df['task_dependency'] = df['Predecessors'].apply(lambda x: ','.join([y for y in str(x).split(',') if any(c.isalpha() for c in y)]))
     
