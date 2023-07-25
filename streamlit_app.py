@@ -94,6 +94,7 @@ st.markdown("Data Analysis Section")
 uploaded_file = st.file_uploader("Choose a file")
 if uploaded_file is not None:
     df = pd.read_excel(uploaded_file, engine="openpyxl")
+    
     columns_check = ['ID',
      'Active',
      'Task_Mode',
