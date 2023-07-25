@@ -100,9 +100,9 @@ if uploaded_file is not None:
         st.write(df)    
     
     # Generate the HTML using Pygwalker
-    #pyg_html = pyg.walk(df, return_html=True)  
+    pyg_html = pyg.walk(df, return_html=True)  
     # Embed the HTML into the Streamlit app
-    #components.html(pyg_html, height=1000, scrolling=True)
+    components.html(pyg_html, height=1000, scrolling=True)
 
 
 
