@@ -133,7 +133,7 @@ if uploaded_file is not None:
         df['Finish_Date'] = pd.to_datetime(df['Finish_Date'])
         df['Actual_Start'] = pd.to_datetime(df['Actual_Start'])
         df['Actual_Finish'] = pd.to_datetime(df['Actual_Finish'])
-        df['Duration'] = pd.to_timedelta(df['Duration']).dt.days
+        df['Duration'] = pd.to_timedelta(df['Duration'], errors="coerce").dt.days
 
 
     
