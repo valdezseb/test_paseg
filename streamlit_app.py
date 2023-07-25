@@ -124,6 +124,7 @@ if uploaded_file is not None:
     except ValueError as e:
         st.warning("Check your dataframe: " + str(e))
     else:
+        st.success("Excel File was read Successfully!")
         
 
 
