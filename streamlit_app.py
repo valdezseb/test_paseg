@@ -122,10 +122,12 @@ if uploaded_file is not None:
         if df.columns.tolist() != columns_check:
             raise ValueError("DataFrame columns do not match expected columns")
     except ValueError as e:
+        st.error("Columns not match template!!")
         st.warning("Check your dataframe: " + str(e))
     else:
+        st.balloons()
         st.success("Excel File was read Successfully!")
-        st.success("Data begins to process, just a second...")
+        st.toast("Data begins to process, just a second...")
         
         df['Start_Date'] = pd.to_datetime(df['Start_Date'])
         df['Finish_Date'] = pd.to_datetime(df['Finish_Date'])
