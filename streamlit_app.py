@@ -94,6 +94,7 @@ if uploaded_file is not None:
     
     df = pd.read_excel(uploaded_file, engine="openpyxl")
     st.write(df)
+if df: 
     # Generate the HTML using Pygwalker
     pyg_html = pyg.walk(df, return_html=True)  
     # Embed the HTML into the Streamlit app
