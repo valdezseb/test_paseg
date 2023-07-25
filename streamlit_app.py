@@ -93,41 +93,8 @@ st.markdown("Data Analysis Section")
 
 uploaded_file = st.file_uploader("Choose a file")
 if uploaded_file is not None:
-    df = pd.read_excel(uploaded_file, engine="openpyxl")
-    
-    columns_check = ['ID',
-     'Active',
-     'Task_Mode',
-     'Task_Name',
-     'Duration',
-     'Start_Date',
-     'Finish_Date',
-     'Predecessors',
-     'Resource_Names',
-     'Actual_Start',
-     'Actual_Finish',
-     'Total_Slack',
-     'Successors',
-     'Unique_ID',
-     'Outline_Level',
-     'Constraint_Date',
-     'Constraint_Type',
-     'Early_Start',
-     'Early_Finish',
-     'Late_Start',
-     'Late_Finish',
-     'Notes']
-    
-    try:
-        if df.columns.tolist() != columns_check:
-            raise ValueError("DataFrame columns do not match expected columns")
-    except ValueError as e:
-        st.error("Columns not match template!!")
-        st.warning("Check your dataframe: " + str(e))
-    else:
-        st.balloons()
-        st.success("Excel File was read Successfully!")
-        st.toast("Data begins to process, just a second...")
+    def process_data(uploaded_file):
+        df = pd.read_excel(uploaded_file, engine="openpyxl")
         # specify the format for the date strings
         date_format = '%Y-%m-%d %H:%M:%S'
         date_format_finish = '%B %d, %Y %I:%M %p'
@@ -311,7 +278,46 @@ if uploaded_file is not None:
         
         #Create/Calculate Total Predecessors
         df['Total Predecessors'] = df['Predecessors'].apply(lambda x: len(x.split(',')) if isinstance(x, str) else None)
+        return df
+
     
+    #df = pd.read_excel(uploaded_file, engine="openpyxl")
+    df = process_data(uploaded_file)
+    
+    columns_check = ['ID',
+     'Active',
+     'Task_Mode',
+     'Task_Name',
+     'Duration',
+     'Start_Date',
+     'Finish_Date',
+     'Predecessors',
+     'Resource_Names',
+     'Actual_Start',
+     'Actual_Finish',
+     'Total_Slack',
+     'Successors',
+     'Unique_ID',
+     'Outline_Level',
+     'Constraint_Date',
+     'Constraint_Type',
+     'Early_Start',
+     'Early_Finish',
+     'Late_Start',
+     'Late_Finish',
+     'Notes']
+    
+    try:
+        if df.columns.tolist() != columns_check:
+            raise ValueError("DataFrame columns do not match expected columns")
+    except ValueError as e:
+        st.error("Columns not match template!!")
+        st.warning("Check your dataframe: " + str(e))
+    else:
+        st.balloons()
+        st.success("Excel File was read Successfully!")
+        st.toast("Data begins to process, just a second...")
+        
         # Generate the HTML using Pygwalker
         #pyg_html = pyg.walk(df, return_html=True)  
         # Embed the HTML into the Streamlit app
