@@ -93,8 +93,7 @@ st.markdown("Data Analysis Section")
 
 uploaded_file = st.file_uploader("Choose a file")
 if uploaded_file is not None:
-    df = pd.read_excel(uploaded_file, engine="openpyxl", 
-                      parse_dates=['Start_Date','Finish_Date','Duration','Actual_Start','Actual_Finish'])
+    df = pd.read_excel(uploaded_file, engine="openpyxl")
     columns_check = ['ID',
      'Active',
      'Task_Mode',
@@ -125,7 +124,13 @@ if uploaded_file is not None:
         st.warning("Check your dataframe: " + str(e))
     else:
         st.success("Excel File was read Successfully!")
+        st.success("Data begins to process, just a second...")
         
+        df['Start_Date'] = pd.to_datetime(df['Start_Date'])
+        df['Finish_Date'] = pd.to_datetime(df['Finish_Date'])
+        df['Actual_Start'] = pd.to_datetime(df['Actual_Start'])
+        df['Actual_Finish'] = pd.to_datetime(df['Actual_Finish'])
+        df['Duration'] = pd.to_timedelta(df['Duration']).dt.days
 
 
     
