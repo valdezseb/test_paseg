@@ -326,8 +326,8 @@ if uploaded_file is not None:
     
     
 
-        
-        return df, state.df = df
+        state.df = df
+        return df
 
     
     #df = pd.read_excel(uploaded_file, engine="openpyxl")
