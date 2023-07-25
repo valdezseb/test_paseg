@@ -128,11 +128,13 @@ if uploaded_file is not None:
         st.balloons()
         st.success("Excel File was read Successfully!")
         st.toast("Data begins to process, just a second...")
+        # specify the format for the date strings
+        date_format = '%Y-%m-%d %H:%M:%S'
+        df['Finish_Date'] = pd.to_datetime(df['Finish_Date'], format=date_format)
+        df['Actual_Start'] = pd.to_datetime(df['Actual_Start'], format=date_format)
+        df['Actual_Finish'] = pd.to_datetime(df['Actual_Finish'], format=date_format)
+        df['Start_Date'] = pd.to_datetime(df['Start_Date'], format=date_format)
         
-        df['Start_Date'] = pd.to_datetime(df['Start_Date'])
-        df['Finish_Date'] = pd.to_datetime(df['Finish_Date'])
-        df['Actual_Start'] = pd.to_datetime(df['Actual_Start'])
-        df['Actual_Finish'] = pd.to_datetime(df['Actual_Finish'])
         # define a custom function to convert duration strings to timedelta
         # check the dtype of the Duration column
         if df['Duration'].dtype == 'datetime64[ns]':
