@@ -134,14 +134,14 @@ if uploaded_file is not None:
         df['Actual_Start'] = pd.to_datetime(df['Actual_Start'])
         df['Actual_Finish'] = pd.to_datetime(df['Actual_Finish'])
         # define a custom function to convert duration strings to timedelta
-        def duration_to_timedelta(value):
-            if isinstance(value, str):
-                value = value.strip()
-                if value[:-1].isdigit():
-                    return pd.Timedelta(value[:-1], unit=value[-1])
-            return pd.NaT
-        # apply the custom function to the Duration column
-        df['Duration'] = df['Duration'].apply(duration_to_timedelta)
+        # check the dtype of the Duration column
+        if df['Duration'].dtype == 'datetime64[ns]':
+            # convert the datetime values to timedelta format
+            df['Duration'] = (pd.to_datetime(df['Duration']) - pd.to_datetime(df['Duration']).min()).astype('timedelta64[ns]')
+        else:
+            # convert the Duration column to timedelta format
+            df['Duration'] = pd.to_timedelta(df['Duration'], errors='coerce')
+        #df['Duration'] = df['Duration'].apply(duration_to_timedelta)
 
 
     
