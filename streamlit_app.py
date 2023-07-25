@@ -369,9 +369,9 @@ if uploaded_file is not None:
     @st.cache_data
     def run_pyg(df):
         # Generate the HTML using Pygwalker
-    pyg_html = pyg.walk(df, return_html=True)  
-    # Embed the HTML into the Streamlit app
-    components.html(pyg_html, height=1000, scrolling=True)
+        pyg_html = pyg.walk(df, return_html=True)  
+        # Embed the HTML into the Streamlit app
+        components.html(pyg_html, height=1000, scrolling=True)
         
 
     run_pyg(df)
