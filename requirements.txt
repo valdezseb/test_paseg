@@ -12,3 +12,5 @@ openapi-schema-pydantic==1.2.4
 pygwalker==0.2
 pandas==2.0
 openpyxl==3.1.2
+regex==2022.10.31
+python-dateutil==2.8.2
