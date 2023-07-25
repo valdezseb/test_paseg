@@ -93,7 +93,7 @@ st.markdown("Data Analysis Section")
 
 uploaded_file = st.file_uploader("Choose a file")
 if uploaded_file is not None:
-    @st.cache
+    @st.cache(suppress_st_warning=True)
     def process_data(uploaded_file):
         
         columns_check = ['ID',
