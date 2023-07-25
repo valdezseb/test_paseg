@@ -327,7 +327,7 @@ if uploaded_file is not None:
     
 
         
-        return df
+        return df, state.df = df
 
     
     #df = pd.read_excel(uploaded_file, engine="openpyxl")
@@ -379,7 +379,7 @@ if uploaded_file is not None:
         pyg_html = pyg.walk(df, return_html=True)  
         # Embed the HTML into the Streamlit app
         components.html(pyg_html, height=1000, scrolling=True)
-    state.df = df
+    #state.df = df
         
 if 'df' in state:
     run_pyg(state.df)
