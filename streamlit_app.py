@@ -91,12 +91,13 @@ st.markdown("Data Analysis Section")
 
 uploaded_file = st.file_uploader("Choose a file")
 if uploaded_file is not None:
-  df = pd.read_excel(uploaded_file)
-  st.write(df)
-  # Generate the HTML using Pygwalker
-   pyg_html = pyg.walk(df, return_html=True)  
-  # Embed the HTML into the Streamlit app
-   components.html(pyg_html, height=1000, scrolling=True)
+    
+    df = pd.read_excel(uploaded_file)
+    st.write(df)
+    # Generate the HTML using Pygwalker
+    pyg_html = pyg.walk(df, return_html=True)  
+    # Embed the HTML into the Streamlit app
+    components.html(pyg_html, height=1000, scrolling=True)
 
 
 
