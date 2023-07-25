@@ -366,12 +366,15 @@ if uploaded_file is not None:
         #components.html(pyg_html, height=1000, scrolling=True)
         #if st.button("See Dataframe"):
         #    st.write(df)    
-
-
-    # Generate the HTML using Pygwalker
+    @st.cache_data
+    def run_pyg(df):
+        # Generate the HTML using Pygwalker
     pyg_html = pyg.walk(df, return_html=True)  
     # Embed the HTML into the Streamlit app
     components.html(pyg_html, height=1000, scrolling=True)
+        
+
+    run_pyg(df)
 
 
 
