@@ -83,3 +83,11 @@ if query:
     result = qa.run(query + '\n' + condition1)
     st.write(result)
 
+st.markdown("---")
+st.markdown("Data Analysis Section")
+
+
+
+
+
+
