@@ -17,7 +17,7 @@ from langchain.prompts.chat import (
     ChatPromptTemplate,
     HumanMessagePromptTemplate,
 )
-
+import pandas as pd
 import pygwalker as pyg
 import streamlit.components.v1 as components
 
