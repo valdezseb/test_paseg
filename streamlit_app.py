@@ -133,7 +133,17 @@ if uploaded_file is not None:
         df['Finish_Date'] = pd.to_datetime(df['Finish_Date'])
         df['Actual_Start'] = pd.to_datetime(df['Actual_Start'])
         df['Actual_Finish'] = pd.to_datetime(df['Actual_Finish'])
-        df['Duration'] = pd.to_timedelta(df['Duration'], errors="coerce").dt.days
+        # define a custom function to convert duration strings to timedelta
+        def duration_to_timedelta(value):
+            if isinstance(value, str):
+                value = value.strip()
+                if value.endswith('d'):
+                    return pd.Timedelta(value[:-1], unit='days')
+                elif value.endswith('w'):
+                    return pd.Timedelta(value[:-1], unit='weeks')
+            return pd.NaT
+        # apply the custom function to the Duration column
+        df['Duration'] = df['Duration'].apply(duration_to_timedelta)
 
 
     
