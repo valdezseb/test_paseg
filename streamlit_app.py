@@ -91,8 +91,15 @@ if query:
 st.markdown("---")
 st.markdown("Data Analysis Section")
 
+# Define the session state
+state = st.session_state
+# Check if an uploaded file exists in the session state
+if 'uploaded_file' not in state:
+    state.uploaded_file = None
+
 uploaded_file = st.file_uploader("Choose a file")
 if uploaded_file is not None:
+    state.uploaded_file = uploaded_file
     @st.cache(suppress_st_warning=True)
     def process_data(uploaded_file):
         
@@ -373,8 +380,8 @@ if uploaded_file is not None:
         # Embed the HTML into the Streamlit app
         components.html(pyg_html, height=1000, scrolling=True)
         
-
-    run_pyg(df)
+if 'df' in state:
+    run_pyg(state.df)
 
 
 
