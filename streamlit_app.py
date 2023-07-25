@@ -326,12 +326,14 @@ if uploaded_file is not None:
     
     
 
-        state.df = df
-        return df
+            state.df = df
+
+            df = process_data(uploaded_file)
+            return df
 
     
     #df = pd.read_excel(uploaded_file, engine="openpyxl")
-    df = process_data(uploaded_file)
+    #df = process_data(uploaded_file)
     
     columns_check = ['ID',
      'Active',
@@ -373,14 +375,18 @@ if uploaded_file is not None:
         #components.html(pyg_html, height=1000, scrolling=True)
         #if st.button("See Dataframe"):
         #    st.write(df)    
-    @st.cache_data
-    def run_pyg(df):
-        # Generate the HTML using Pygwalker
-        pyg_html = pyg.walk(df, return_html=True)  
-        # Embed the HTML into the Streamlit app
-        components.html(pyg_html, height=1000, scrolling=True)
+   
     #state.df = df
-        
+
+@st.cache_data
+def run_pyg(df):
+    # Generate the HTML using Pygwalker
+    pyg_html = pyg.walk(df, return_html=True)  
+    # Embed the HTML into the Streamlit app
+    components.html(pyg_html, height=1000, scrolling=True)
+
+
+
 if 'df' in state:
     run_pyg(state.df)
 
