@@ -323,11 +323,13 @@ if uploaded_file is not None:
             #Create/Calculate Total Predecessors
             df['Total Predecessors'] = df['Predecessors'].apply(lambda x: len(x.split(',')) if isinstance(x, str) else None)
 
-            df = process_data(uploaded_file)
-
-            state.df = df
+            
             
             return df
+        
+        state.df = df
+
+        df = process_data(uploaded_file)
 
     
     #df = pd.read_excel(uploaded_file, engine="openpyxl")
