@@ -93,6 +93,7 @@ st.markdown("Data Analysis Section")
 
 uploaded_file = st.file_uploader("Choose a file")
 if uploaded_file is not None:
+    @st.cache
     def process_data(uploaded_file):
         df = pd.read_excel(uploaded_file, engine="openpyxl")
         # specify the format for the date strings
