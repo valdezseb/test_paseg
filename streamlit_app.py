@@ -130,7 +130,8 @@ if uploaded_file is not None:
         st.toast("Data begins to process, just a second...")
         # specify the format for the date strings
         date_format = '%Y-%m-%d %H:%M:%S'
-        df['Finish_Date'] = pd.to_datetime(df['Finish_Date'], format=date_format)
+        date_format_finish = '%B %d, %Y %I:%M %p'
+        df['Finish_Date'] = pd.to_datetime(df['Finish_Date'], format=date_format_finish)
         df['Actual_Start'] = pd.to_datetime(df['Actual_Start'], format=date_format)
         df['Actual_Finish'] = pd.to_datetime(df['Actual_Finish'], format=date_format)
         df['Start_Date'] = pd.to_datetime(df['Start_Date'], format=date_format)
