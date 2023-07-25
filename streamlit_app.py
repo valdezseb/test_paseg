@@ -135,7 +135,7 @@ if uploaded_file is not None:
         df['Finish_Date'] = pd.to_datetime(df['Finish_Date'], format=date_format_finish)
         df['Actual_Start'] = pd.to_datetime(df['Actual_Start'], format=date_format_as)
         df['Actual_Finish'] = pd.to_datetime(df['Actual_Finish'], format=date_format_as)
-        df['Start_Date'] = pd.to_datetime(df['Start_Date'], format=date_format)
+        df['Start_Date'] = pd.to_datetime(df['Start_Date'], format=date_format_finish)
         
         # define a custom function to convert duration strings to timedelta
         # check the dtype of the Duration column
