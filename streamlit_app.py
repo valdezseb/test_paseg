@@ -137,10 +137,8 @@ if uploaded_file is not None:
         def duration_to_timedelta(value):
             if isinstance(value, str):
                 value = value.strip()
-                if value.endswith('d'):
-                    return pd.Timedelta(value[:-1], unit='days')
-                elif value.endswith('w'):
-                    return pd.Timedelta(value[:-1], unit='weeks')
+                if value[:-1].isdigit():
+                    return pd.Timedelta(value[:-1], unit=value[-1])
             return pd.NaT
         # apply the custom function to the Duration column
         df['Duration'] = df['Duration'].apply(duration_to_timedelta)
