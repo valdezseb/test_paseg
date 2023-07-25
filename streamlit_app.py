@@ -17,6 +17,8 @@ from langchain.prompts.chat import (
     ChatPromptTemplate,
     HumanMessagePromptTemplate,
 )
+import pygwalker as pyg
+import streamlit.components.v1 as components
 
 
 #st.set_page_config(page_title="PASEG Genie ", page_icon=":coffee:")
@@ -86,6 +88,17 @@ if query:
 st.markdown("---")
 st.markdown("Data Analysis Section")
 
+uploaded_file = st.file_uploader("Choose a file")
+if uploaded_file is not None:
+  df = pd.read_csv(uploaded_file)
+  st.write(df)
+
+
+# Generate the HTML using Pygwalker
+pyg_html = pyg.walk(df, return_html=True)
+ 
+# Embed the HTML into the Streamlit app
+components.html(pyg_html, height=1000, scrolling=True)
 
 
 
