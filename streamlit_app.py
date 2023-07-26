@@ -322,10 +322,8 @@ if uploaded_file is not None:
             
             #Create/Calculate Total Predecessors
             df['Total Predecessors'] = df['Predecessors'].apply(lambda x: len(x.split(',')) if isinstance(x, str) else None)
-
-        state.df = df
             
-            
+            state.df = df    
         return df
         
     
