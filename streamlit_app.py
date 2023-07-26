@@ -91,17 +91,8 @@ if query:
 st.markdown("---")
 st.markdown("Data Analysis Section")
 
-# Define the session state
-state = st.session_state
-# Check if an uploaded file exists in the session state
-if 'uploaded_file' not in state:
-    state.uploaded_file = None
-
-uploaded_file = st.file_uploader("Choose a file")
-if uploaded_file is not None:
-    state.uploaded_file = uploaded_file
-    @st.cache(suppress_st_warning=True)
-    def process_data(uploaded_file):
+@st.cache(suppress_st_warning=True)
+def process_data(uploaded_file):
         
         columns_check = ['ID',
          'Active',
@@ -325,8 +316,24 @@ if uploaded_file is not None:
             
             state.df = df    
             return df
+
+
+
+
+
+
+# Define the session state
+state = st.session_state
+# Check if an uploaded file exists in the session state
+if 'uploaded_file' not in state:
+    state.uploaded_file = None
+
+uploaded_file = st.file_uploader("Choose a file")
+if uploaded_file is not None:
+    state.uploaded_file = uploaded_file
+    
         
-@st.cache_data
+@st.cache_resource
 def run_pyg(df):
     # Generate the HTML using Pygwalker
     pyg_html = pyg.walk(df, return_html=True)  
@@ -395,17 +402,17 @@ def run_pyg(df):
    
     #state.df = df
 
-@st.cache_data
-def run_pyg(df):
-    # Generate the HTML using Pygwalker
-    pyg_html = pyg.walk(df, return_html=True)  
-    # Embed the HTML into the Streamlit app
-    components.html(pyg_html, height=1000, scrolling=True)
+#@st.cache_data
+#def run_pyg(df):
+#    # Generate the HTML using Pygwalker
+#    pyg_html = pyg.walk(df, return_html=True)  
+#    # Embed the HTML into the Streamlit app
+#    components.html(pyg_html, height=1000, scrolling=True)
 
 
 
-if 'df' in state:
-    run_pyg(state.df)
+#if 'df' in state:
+#    run_pyg(state.df)
 
 
 
