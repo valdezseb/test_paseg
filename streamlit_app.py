@@ -324,10 +324,16 @@ if uploaded_file is not None:
             df['Total Predecessors'] = df['Predecessors'].apply(lambda x: len(x.split(',')) if isinstance(x, str) else None)
             
             state.df = df    
-        return df
+            return df
         
-    
-    df = process_data(uploaded_file)
+
+    try:
+        df = process_data(uploaded_file)
+    except:
+        st.warning("Error")
+    else:
+        pass
+        
 
     
     #df = pd.read_excel(uploaded_file, engine="openpyxl")
