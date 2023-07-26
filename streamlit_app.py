@@ -346,8 +346,11 @@ def run_pyg(df):
 
     
 try:
-    df = process_data(uploaded_file)
-    run_pyg(df)
+    if state.uploaded_file is not None:
+        df = process_data(state.uploaded_file)
+        if df is not None:
+            # Display success message here if necessary
+            run_pyg(df)
 except FileNotFoundError:
     st.warning("File not found. Please ensure the correct file is uploaded.")
 except ValueError:
