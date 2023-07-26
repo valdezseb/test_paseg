@@ -342,12 +342,12 @@ def run_pyg(df):
 
 
     
-    try:
-        df = process_data(uploaded_file)
-    except:
-        st.warning("Error")
-    else:
-        run_pyg(df)
+try:
+    df = process_data(uploaded_file)
+except:
+    st.warning("Error")
+else:
+    run_pyg(df)
 
 
 
