@@ -376,7 +376,7 @@ if uploaded_file is not None:
    
     #state.df = df
 
-@st.cache_data
+@st.cache_resource
 def run_pyg(df):
     # Generate the HTML using Pygwalker
     pyg_html = pyg.walk(df, return_html=True)  
