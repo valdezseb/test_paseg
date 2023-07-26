@@ -347,10 +347,13 @@ def run_pyg(df):
     
 try:
     df = process_data(uploaded_file)
-except TypeError as e:
-    st.warning("Excel File not uploaded Correctly")
-else:
     run_pyg(df)
+except FileNotFoundError:
+    st.warning("File not found. Please ensure the correct file is uploaded.")
+except ValueError:
+    st.warning("Data format error. Please check the format of the uploaded file.")
+except Exception as e:
+    st.error(f"An error occurred during data processing: {e}")
 
 
 
