@@ -343,12 +343,13 @@ def run_pyg(df):
 
     
 try:
-    if st.session_state.uploaded_file is not None:  
-        st.write("File uploaded:", st.session_state.uploaded_file.name)
     df = process_data(uploaded_file)
     run_pyg(df)
 except:
     st.warning("Alarm")
+else:
+    if st.session_state.uploaded_file is not None:  
+        st.write("File uploaded:", st.session_state.uploaded_file.name)
 
 
 
