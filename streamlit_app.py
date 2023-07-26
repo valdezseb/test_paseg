@@ -326,13 +326,22 @@ if uploaded_file is not None:
             state.df = df    
             return df
         
+@st.cache_data
+def run_pyg(df):
+    # Generate the HTML using Pygwalker
+    pyg_html = pyg.walk(df, return_html=True)  
+    # Embed the HTML into the Streamlit app
+    components.html(pyg_html, height=1000, scrolling=True)
 
+
+    
     try:
         df = process_data(uploaded_file)
     except:
         st.warning("Error")
     else:
-        pass
+        if 'df' in state:
+            run_pyg(state.df)
         
 
     
@@ -382,7 +391,7 @@ if uploaded_file is not None:
    
     #state.df = df
 
-@st.cache_resource
+@st.cache_data
 def run_pyg(df):
     # Generate the HTML using Pygwalker
     pyg_html = pyg.walk(df, return_html=True)  
