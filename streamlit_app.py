@@ -332,11 +332,6 @@ uploaded_file = st.file_uploader("Choose a file")
 if uploaded_file is not None:
     state.uploaded_file = uploaded_file
     
-if st.session_state.uploaded_file is not None:
-    
-    st.write("File uploaded:", st.session_state.uploaded_file.name)
-
-
 
 @st.cache_data
 def run_pyg(df):
@@ -348,6 +343,8 @@ def run_pyg(df):
 
     
 try:
+    if st.session_state.uploaded_file is not None:  
+        st.write("File uploaded:", st.session_state.uploaded_file.name)
     df = process_data(uploaded_file)
     run_pyg(df)
 except:
