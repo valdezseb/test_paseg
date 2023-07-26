@@ -332,8 +332,11 @@ uploaded_file = st.file_uploader("Choose a file")
 if uploaded_file is not None:
     state.uploaded_file = uploaded_file
     
-        
-@st.cache_resource
+
+
+
+
+@st.cache_data
 def run_pyg(df):
     # Generate the HTML using Pygwalker
     pyg_html = pyg.walk(df, return_html=True)  
