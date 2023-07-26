@@ -345,7 +345,7 @@ def run_pyg(df):
 try:
     df = process_data(uploaded_file)
 except:
-    st.warning("Error")
+    st.warning("Excel File not uploaded Correctly")
 else:
     run_pyg(df)
 
