@@ -314,7 +314,7 @@ def process_data(uploaded_file):
             #Create/Calculate Total Predecessors
             df['Total Predecessors'] = df['Predecessors'].apply(lambda x: len(x.split(',')) if isinstance(x, str) else None)
             
-            state.df = df    
+            #state.df = df    
             return df
 
 
@@ -346,17 +346,10 @@ def run_pyg(df):
 
     
 try:
-    if state.uploaded_file is not None:
-        df = process_data(state.uploaded_file)
-        if df is not None:
-            # Display success message here if necessary
-            run_pyg(df)
-except FileNotFoundError:
-    st.warning("File not found. Please ensure the correct file is uploaded.")
-except ValueError:
-    st.warning("Data format error. Please check the format of the uploaded file.")
-except Exception as e:
-    st.error(f"An error occurred during data processing: {e}")
+    df = process_data(uploaded_file)
+    run_pyg(df)
+except:
+    st.warning("Alarm")
 
 
 
