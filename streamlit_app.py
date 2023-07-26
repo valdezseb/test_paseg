@@ -340,8 +340,12 @@ def run_pyg(df):
     except:
         st.warning("Error")
     else:
-        if 'df' in state:
-            run_pyg(state.df)
+        run_pyg(df)
+
+
+
+#if 'df' in state:
+#    run_pyg(state.df)
         
 
     
